@@ -1,0 +1,115 @@
+/* --- CSS GALLERY REVISI TOTAL --- */
+.gallery-page { background-color: black; margin: 0; }
+
+/* Container & Snap Logic */
+.snap-container {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+}
+.snap-section {
+    height: 100vh; width: 100%;
+    scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative; overflow: hidden;
+}
+
+/* --- WARNA SECTION (Sesuai Design Asli) --- */
+.artwork-hero { background-color: white !important; color: black !important; text-align: center; }
+.slider-section.dark { background-color: black !important; color: white !important; }
+.slider-section.light { background-color: white !important; color: black !important; }
+.contact-me-footer { background-color: black !important; color: white !important; text-align: center; }
+
+/* --- HEADER FIX --- */
+.gallery-nav {
+    width: 100%; display: flex; justify-content: space-between;
+    padding: 20px 25px; /* Padding kiri kanan biar ga mepet */
+    font-weight: 900; font-size: 12px;
+    position: absolute; top: 0; left: 0; box-sizing: border-box;
+}
+.brand.left { text-align: left; } /* Paksa rata kiri */
+
+.hero-center { margin: auto; width: 100%; z-index: 2; }
+.big-title {
+    font-size: clamp(50px, 15vw, 80px);
+    font-weight: 900; letter-spacing: -3px; line-height: 0.9;
+}
+/* Paksa warna merah untuk subtitle di header */
+.red-text-hero {
+    color: #FF0000 !important;
+    font-weight: 700; font-size: 12px; margin: 0;
+    text-align: right;
+    width: fit-content; margin-left: auto; margin-right: 25%; /* Posisi agak ke kanan */
+}
+
+/* --- SLIDER FIX (UKURAN PAS DI ANDROID) --- */
+.slider-content { margin: auto; width: 100%; }
+.section-label {
+    position: absolute; top: 30px; left: 25px;
+    font-weight: 900; font-size: 14px;
+}
+.slider-container {
+    display: flex; align-items: center; justify-content: center;
+    gap: 5px; /* Jarak antar gambar dirapatkan */
+    margin: 20px 0; position: relative;
+}
+
+/* TOMBOL PANAH */
+.nav-btn {
+    background: none; border: none; color: white; font-size: 30px;
+    padding: 20px; cursor: pointer; z-index: 10;
+}
+.red-arrow { color: #FF0000 !important; } /* Panah merah di background putih */
+
+/* UKURAN GAMBAR RESPONSIF (KUNCI TAMPILAN ANDROID) */
+.slides { display: flex; align-items: center; gap: 10px; }
+
+.center-img {
+    width: 65vw; /* Lebar 65% dari layar HP */
+    height: 95vw; /* Tinggi menyesuaikan rasio portrait */
+    object-fit: cover;
+    border: 3px solid #FF0000;
+    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    z-index: 5;
+}
+
+.side-img {
+    width: 15vw; /* Gambar samping cuma ngintip 15% */
+    height: 25vw;
+    object-fit: cover;
+    opacity: 0.3;
+    filter: grayscale(100%); /* Biar yang tengah makin fokus */
+}
+
+.slider-caption {
+    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+    font-weight: 700; margin-top: 30px; text-align: center;
+}
+
+/* --- CONTACT ME FIX (BALIK KE DESIGN AWAL) --- */
+.contact-center { margin: auto; width: 100%; }
+.contact-title {
+    font-size: clamp(40px, 12vw, 60px);
+    font-weight: 900; margin-bottom: 20px;
+}
+.red-text { color: #FF0000; }
+.contact-desc {
+    font-size: 11px; opacity: 0.8; max-width: 280px; margin: 0 auto 40px auto;
+}
+
+/* Ikon Gede Putih, Hover Merah */
+.big-contact-icons {
+    display: flex; justify-content: center; gap: 50px; margin-bottom: 40px;
+}
+.big-contact-icons i {
+    font-size: 70px; color: white; /* Default Putih */
+    transition: 0.3s ease;
+}
+.big-contact-icons a:hover i {
+    color: #FF0000; /* Hover Merah */
+    transform: scale(1.1);
+}
+.back-home-link {
+    color: #888; font-size: 10px; text-decoration: none; letter-spacing: 1px;
+}

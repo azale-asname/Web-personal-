@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azale | Designer & Illustrator</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  
+  <button id="darkModeToggle" class="dark-mode-btn">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <div class="container animate__animated animate__fadeIn">
+        
+        <header class="header">
+            <div class="social-top">
+                <a href="https://instagram.com/USERNAME_LU" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://wa.me/628XXXXXXXXXX" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                <a href="https://twitter.com/USERNAME_LU" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+            <img src="hero.png" alt="Hero Art" class="hero-img animate__animated animate__fadeInRight">
+            <h1 class="main-title animate__animated animate__slideInLeft">
+                <span class="red-bar"></span>AZALE
+            </h1>
+        </header>
+
+        <section class="biography">
+            <h2 class="section-title">BIOGR<span class="red">APHY</span></h2>
+            <div class="bio-flex">
+                <div class="bio-text">
+                    <p>Hi, I'm Azale, a designer and illustrator who has studied graphic design and art extensively.</p>
+                    <p>I'm from Indonesia, specifically the island of Bali.</p>
+                    <p>I design brands and interfaces that not only look good but also resonate with audiences.</p>
+
+                    <p>With a keen aesthetic sense and a deep understanding of user behavior, I design brands and interfaces that not only look good but also resonate with audiences.</p>
+                </div>
+                <div class="bio-image animate__animated animate__zoomIn">
+                    <img src="profile.png" alt="Profile">
+                </div>
+            </div>
+        </section>
+
+        <section class="quote">
+            <h3 class="animate__animated animate__pulse animate__infinite">GIVE ME A PEN<br><span class="red">AND I WILL AMAZE Y'ALL</span></h3>
+        </section>
+
+        <section class="skill">
+            <div class="skill-flex">
+                <div class="skill-image">
+                    <img src="artwork_sample.png" alt="Skill Artwork">
+                </div>
+                <div class="skill-text">
+                    <h2 class="section-title">SKI<span class="red">LL</span></h2>
+                    <p>Design is one of the things I can offer you, because it's something I've mastered to the point where I can be called a professional.</p>
+                    <p>Apart from that, I also offer an illustration service for you, I have also studied this field to the point where I can be called a professional.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="artwork-footer">
+                <h2 class="section-title">ART<span class="red">WORK</span></h2>
+                <p>If you are curious about my work, you can see it on my social media.</p>
+                <div class="footer-icons">
+                    <a href="https://www.instagram.com/azaleartchieve._?igsh=MWVkcjQ3aHNqZHF6ZQ==" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://twitter.com/USERNAME_LU" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://www.tiktok.com/@waner.png?_r=1&_t=ZS-93E2WQo5y5t" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <div class="contact-footer">
+                <h2 class="section-title"><span class="red">CONTACT</span>ME</h2>
+                <p>If you are interested in my services, you can contact me by pressing the 3 options below.</p>
+                <div class="footer-icons">
+                    <a href="mailto:lyviaanih@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://wa.me/628XXXXXXXXXX" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <script>
+        const btn = document.getElementById('darkModeToggle');
+        const icon = btn.querySelector('i');
+        
+        btn.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            
+            if(document.body.classList.contains('dark-theme')) {
+                icon.classList.replace('fa-moon', 'fa-sun');
+            } else {
+                icon.classList.replace('fa-sun', 'fa-moon');
+            }
+        });
+    </script>
+    
+</body>
+</html>

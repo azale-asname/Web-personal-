@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Artwork Section | Azale</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    
+    <link rel="stylesheet" href="style2.css">
+</head>
+<body class="gallery-page">
+
+    <div class="snap-container">
+        
+        <header class="artwork-hero snap-section">
+            <nav class="gallery-nav">
+                <div class="brand left"><span class="red-bar-small"></span> AZALE</div>
+                <div class="nav-right">PROJECT / DESIGN / ART</div>
+            </nav>
+            <div class="hero-center">
+                <h1 class="big-title">ARTWORK</h1>
+                <div class="subtitle-group">
+                    <p class="red-text-hero">SECTION</p>
+                    <p class="red-text-hero">PART OF DESIGN</p>
+                </div>
+            </div>
+        </header>
+
+        <section class="slider-section dark snap-section" id="design-section">
+            <div class="section-label">
+                <span class="red-bar-small"></span> DESIGN
+            </div>
+            
+            <div class="slider-content">
+                <div class="slider-container">
+                    <button class="nav-btn prev-btn" onclick="moveSlider('design', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    
+                    <div class="slides" id="design-slides">
+                        <img src="design1.png" class="side-img" id="design-left">
+                        <img src="design2.png" class="center-img" id="design-center">
+                        <img src="design3.png" class="side-img" id="design-right">
+                    </div>
+                    
+                    <button class="nav-btn next-btn" onclick="moveSlider('design', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <p class="slider-caption">SOME RESULT OF MY DESIGN</p>
+            </div>
+        </section>
+
+        <section class="slider-section light snap-section" id="art-section">
+            <div class="section-label">
+                <span class="red-bar-small"></span> ART
+            </div>
+            
+            <div class="slider-content">
+                <div class="slider-container">
+                    <button class="nav-btn prev-btn red-arrow" onclick="moveSlider('art', -1)">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="slides" id="art-slides">
+                        <img src="art1.png" class="side-img" id="art-left">
+                        <img src="art2.png" class="center-img" id="art-center">
+                        <img src="art3.png" class="side-img" id="art-right">
+                    </div>
+                    <button class="nav-btn next-btn red-arrow" onclick="moveSlider('art', 1)">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+                <p class="slider-caption">SOME RESULT OF MY ART</p>
+            </div>
+        </section>
+
+        <section class="contact-me-footer snap-section">
+            <div class="contact-center">
+                <h2 class="contact-title"><span class="red-text">CONTACT</span> ME</h2>
+                <p class="contact-desc">If you are interested in my services, you can contact me by pressing the 2 options below.</p>
+                
+                <div class="big-contact-icons">
+                    <a href="mailto:EMAIL_LU@gmail.com"><i class="fa-regular fa-envelope"></i></a>
+                    <a href="https://wa.me/628XXXXXXXXXX"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+                
+                <a href="index.html" class="back-home-link">BACK TO HOME</a>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // --- DATA GAMBAR ---
+        // Ganti nama file ini dengan semua gambar yang lu punya
+        const designImages = ['design1.png', 'design2.png', 'design3.png', 'design4.png', 'design5.png'];
+        const artImages = ['art1.png', 'art2.png', 'art3.png', 'art4.png', 'art5.png'];
+
+        // Posisi awal (index gambar tengah)
+        let designIndex = 1; // Mulai dari gambar ke-2
+        let artIndex = 1; 
+
+        function moveSlider(type, direction) {
+            let images, index;
+            if (type === 'design') {
+                images = designImages;
+                designIndex += direction;
+                index = designIndex;
+            } else {
+                images = artImages;
+                artIndex += direction;
+                index = artIndex;
+            }
+
+            // Logika Loop (biar muter terus)
+            if (index < 0) index = images.length - 1;
+            if (index >= images.length) index = 0;
+
+            // Update index global
+            if (type === 'design') designIndex = index; else artIndex = index;
+
+            // Hitung index kiri dan kanan
+            let leftIndex = (index - 1 + images.length) % images.length;
+            let rightIndex = (index + 1) % images.length;
+
+            // Update Gambar di HTML
+            document.getElementById(`${type}-left`).src = images[leftIndex];
+            document.getElementById(`${type}-center`).src = images[index];
+            document.getElementById(`${type}-right`).src = images[rightIndex];
+
+            // Efek animasi kecil
+            const centerImg = document.getElementById(`${type}-center`);
+            centerImg.style.transform = 'scale(0.95)';
+            setTimeout(() => { centerImg.style.transform = 'scale(1)'; }, 150);
+        }
+    </script>
+</body>
+</html>
