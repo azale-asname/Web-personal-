@@ -1,115 +1,119 @@
-/* --- CSS GALLERY REVISI TOTAL --- */
-.gallery-page { background-color: black; margin: 0; }
+/* --- RESET & SNAP SETUP --- */
+* { box-sizing: border-box; }
+body { margin: 0; font-family: 'Inter', sans-serif; background: #000; overflow: hidden; }
 
-/* Container & Snap Logic */
 .snap-container {
-    height: 100vh;
-    overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    height: 100vh; overflow-y: scroll;
+    scroll-snap-type: y mandatory; scroll-behavior: smooth;
 }
 .snap-section {
-    height: 100vh; width: 100%;
-    scroll-snap-align: start;
-    display: flex; flex-direction: column; position: relative; overflow: hidden;
+    height: 100vh; width: 100%; scroll-snap-align: start;
+    display: flex; flex-direction: column; position: relative;
+    overflow: hidden; /* Penting buat animasi */
 }
 
-/* --- WARNA SECTION (Sesuai Design Asli) --- */
-.artwork-hero { background-color: white !important; color: black !important; text-align: center; }
-.slider-section.dark { background-color: black !important; color: white !important; }
-.slider-section.light { background-color: white !important; color: black !important; }
-.contact-me-footer { background-color: black !important; color: white !important; text-align: center; }
-
-/* --- HEADER FIX --- */
+/* --- HEADER STYLES --- */
+.artwork-hero { background: #fff !important; color: #000; }
 .gallery-nav {
-    width: 100%; display: flex; justify-content: space-between;
-    padding: 20px 25px; /* Padding kiri kanan biar ga mepet */
-    font-weight: 900; font-size: 12px;
-    position: absolute; top: 0; left: 0; box-sizing: border-box;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px; width: 100%; position: absolute; top: 0; z-index: 10;
 }
-.brand.left { text-align: left; } /* Paksa rata kiri */
+.brand-left { font-weight: 900; font-size: 14px; }
+.nav-right { font-weight: 700; font-size: 10px; }
+.hero-center { margin: auto; text-align: center; width: 100%; }
+.big-title { font-size: 18vw; font-weight: 900; margin: 0; line-height: 0.8; letter-spacing: -5px; }
+.subtitle-container { text-align: right; width: 85%; margin-top: 5px; }
+.red-accent { color: #FF0000; font-weight: 900; font-size: 12px; margin: 0; }
 
-.hero-center { margin: auto; width: 100%; z-index: 2; }
-.big-title {
-    font-size: clamp(50px, 15vw, 80px);
-    font-weight: 900; letter-spacing: -3px; line-height: 0.9;
+/* --- SLIDER SECTION STYLES --- */
+.slider-section.dark { background: #000; color: #fff; }
+.slider-section.light { background: #fff; color: #000; }
+.section-label { position: absolute; top: 30px; left: 20px; font-weight: 900; z-index: 10; }
+.red-bar-small { display: inline-block; width: 4px; height: 14px; background: #f00; margin-right: 5px; }
+.slider-content { margin: auto; width: 100%; text-align: center; }
+.slider-wrapper { display: flex; align-items: center; justify-content: center; gap: 5px; }
+.img-display { display: flex; align-items: center; gap: 8px; }
+.center-img { 
+    width: 60vw; height: 85vw; object-fit: cover; 
+    border: 3px solid #f00; 
+    /* Efek bernafas otomatis */
+    animation: pulse-glow 3s infinite;
 }
-/* Paksa warna merah untuk subtitle di header */
-.red-text-hero {
-    color: #FF0000 !important;
-    font-weight: 700; font-size: 12px; margin: 0;
-    text-align: right;
-    width: fit-content; margin-left: auto; margin-right: 25%; /* Posisi agak ke kanan */
+.side-img { width: 12vw; height: 20vw; object-fit: cover; opacity: 0.3; transition: 0.3s; }
+.arrow-btn {
+    background: rgba(255,255,255,0.1); border: none; color: #fff;
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-size: 20px; cursor: pointer;
 }
+.red-btn { background: rgba(255,0,0,0.1); color: #f00; }
+.slider-caption { font-size: 9px; letter-spacing: 2px; margin-top: 20px; opacity: 0.8; }
 
-/* --- SLIDER FIX (UKURAN PAS DI ANDROID) --- */
-.slider-content { margin: auto; width: 100%; }
-.section-label {
-    position: absolute; top: 30px; left: 25px;
-    font-weight: 900; font-size: 14px;
-}
-.slider-container {
-    display: flex; align-items: center; justify-content: center;
-    gap: 5px; /* Jarak antar gambar dirapatkan */
-    margin: 20px 0; position: relative;
-}
+/* --- CONTACT SECTION STYLES --- */
+.contact-me-footer { background: #000 !important; color: #fff; }
+.contact-center { margin: auto; text-align: center; }
+.contact-title { font-size: 45px; font-weight: 900; margin-bottom: 10px; }
+.red-text { color: #f00; }
+.contact-desc { font-size: 11px; max-width: 250px; margin: 0 auto 30px; opacity: 0.7; }
+.contact-icons-row { display: flex; justify-content: center; gap: 40px; margin-bottom: 30px; }
+.contact-icons-row i { font-size: 65px; color: #fff; transition: 0.3s; }
+.contact-icons-row a:active i { color: #f00; }
+.home-back { color: #555; font-size: 10px; text-decoration: none; letter-spacing: 1px; display: inline-block; }
 
-/* TOMBOL PANAH */
-.nav-btn {
-    background: none; border: none; color: white; font-size: 30px;
-    padding: 20px; cursor: pointer; z-index: 10;
-}
-.red-arrow { color: #FF0000 !important; } /* Panah merah di background putih */
+/* =========================================
+   BAGIAN ANIMASI PROFESIONAL (JANGAN DIHAPUS)
+========================================= */
 
-/* UKURAN GAMBAR RESPONSIF (KUNCI TAMPILAN ANDROID) */
-.slides { display: flex; align-items: center; gap: 10px; }
-
-.center-img {
-    width: 65vw; /* Lebar 65% dari layar HP */
-    height: 95vw; /* Tinggi menyesuaikan rasio portrait */
-    object-fit: cover;
-    border: 3px solid #FF0000;
-    box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
-    transition: transform 0.3s ease;
-    z-index: 5;
-}
-
-.side-img {
-    width: 15vw; /* Gambar samping cuma ngintip 15% */
-    height: 25vw;
-    object-fit: cover;
-    opacity: 0.3;
-    filter: grayscale(100%); /* Biar yang tengah makin fokus */
+/* 1. Setup Awal Elemen yang Mau Muncul (Sembunyi dulu) */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px); /* Geser ke bawah dikit */
+    transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-.slider-caption {
-    font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
-    font-weight: 700; margin-top: 30px; text-align: center;
+/* 2. Saat Section Aktif, Elemen Muncul */
+.active .reveal {
+    opacity: 1;
+    transform: translateY(0); /* Balik ke posisi semula */
 }
 
-/* --- CONTACT ME FIX (BALIK KE DESIGN AWAL) --- */
-.contact-center { margin: auto; width: 100%; }
-.contact-title {
-    font-size: clamp(40px, 12vw, 60px);
-    font-weight: 900; margin-bottom: 20px;
+/* 3. Delay Biar Munculnya Gantian (Staggered) */
+.delay-1 { transition-delay: 0.2s; }
+.delay-2 { transition-delay: 0.4s; }
+.delay-3 { transition-delay: 0.6s; }
+
+/* 4. Animasi Khusus Judul "ARTWORK" (Melebar Keren) */
+@keyframes tracking-in-expand {
+    0% { letter-spacing: -0.5em; opacity: 0; }
+    40% { opacity: 0.6; }
+    100% { opacity: 1; letter-spacing: -5px; }
 }
-.red-text { color: #FF0000; }
-.contact-desc {
-    font-size: 11px; opacity: 0.8; max-width: 280px; margin: 0 auto 40px auto;
+.active .big-title {
+    animation: tracking-in-expand 0.8s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
 }
 
-/* Ikon Gede Putih, Hover Merah */
-.big-contact-icons {
-    display: flex; justify-content: center; gap: 50px; margin-bottom: 40px;
+/* 5. Efek Bernafas untuk Gambar Tengah */
+@keyframes pulse-glow {
+    0% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
+    50% { box-shadow: 0 0 35px rgba(255, 0, 0, 0.7); scale: 1.02; }
+    100% { box-shadow: 0 0 15px rgba(255, 0, 0, 0.3); }
 }
-.big-contact-icons i {
-    font-size: 70px; color: white; /* Default Putih */
-    transition: 0.3s ease;
+/* --- ANIMASI TRANSISI SLIDER --- */
+.center-img, .side-img {
+    /* Transisi 0.5 detik biar smooth, bukan kedip */
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
-.big-contact-icons a:hover i {
-    color: #FF0000; /* Hover Merah */
-    transform: scale(1.1);
+
+/* Efek saat gambar sedang 'loading' ganti slide */
+.img-fade {
+    opacity: 0;
+    transform: scale(0.9);
 }
-.back-home-link {
-    color: #888; font-size: 10px; text-decoration: none; letter-spacing: 1px;
+
+/* Biar gambar ga lari saat transisi */
+.img-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 90vw; /* Jaga tinggi biar layout ga goyang */
 }
