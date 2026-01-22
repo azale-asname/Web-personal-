@@ -30,16 +30,81 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #000; overflow: 
 .slider-section.light { background: #fff; color: #000; }
 .section-label { position: absolute; top: 30px; left: 20px; font-weight: 900; z-index: 10; }
 .red-bar-small { display: inline-block; width: 4px; height: 14px; background: #f00; margin-right: 5px; }
-.slider-content { margin: auto; width: 100%; text-align: center; }
-.slider-wrapper { display: flex; align-items: center; justify-content: center; gap: 5px; }
-.img-display { display: flex; align-items: center; gap: 8px; }
-.center-img { 
-    width: 60vw; height: 85vw; object-fit: cover; 
-    border: 3px solid #f00; 
-    /* Efek bernafas otomatis */
-    animation: pulse-glow 3s infinite;
+/* --- REVISI ANTI KEPOTONG WINDOWS --- */
+
+.slider-content {
+    margin: auto;
+    width: 100%;
+    height: 100%; /* Pastikan content ambil full space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
-.side-img { width: 12vw; height: 20vw; object-fit: cover; opacity: 0.3; transition: 0.3s; }
+
+.slider-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    width: 100%;
+    max-height: 80vh; /* KUNCI: Jangan biarkan slider lebih tinggi dari 80% layar */
+}
+
+.img-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    /* Hilangkan min-height vw biar gak narik ke bawah di PC */
+}
+
+.center-img { 
+    /* UKURAN CERDAS: Pilih mana yang paling kecil antara 60% lebar atau 75% tinggi */
+    width: auto;
+    height: auto;
+    max-width: 70vw; 
+    max-height: 75vh; /* Ngunci tinggi art agar SELALU muat di layar Windows */
+    
+    object-fit: contain; /* Gambar utuh, tidak di-crop */
+    border: 3px solid #f00; 
+    border-radius: 8px;
+    animation: pulse-glow 3s infinite;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.side-img { 
+    /* Sembunyikan side-img di Windows biar gak berantakan, atau kecilkan */
+    width: auto;
+    max-height: 30vh;
+    max-width: 10vw;
+    object-fit: cover; 
+    opacity: 0.2; 
+    transition: 0.3s; 
+}
+
+/* Responsif khusus HP (Portrait) */
+@media (max-width: 600px) {
+    .center-img {
+        width: 85vw; /* Di HP balik ke lebar layar */
+        max-height: 60vh;
+    }
+    .side-img {
+        display: none; /* Di HP mending ilangin aja biar fokus ke gambar tengah */
+    }
+}
+
+/* Biar logo DESIGN di pojok gak kepotong header */
+.section-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-weight: 900;
+    z-index: 20;
+    background: rgba(0,0,0,0.5); /* Kasih background tipis biar kebaca */
+    padding: 5px 10px;
+    border-radius: 4px;
+}vw; object-fit: cover; opacity: 0.3; transition: 0.3s; }
 .arrow-btn {
     background: rgba(255,255,255,0.1); border: none; color: #fff;
     width: 40px; height: 40px; border-radius: 50%;
@@ -116,55 +181,4 @@ body { margin: 0; font-family: 'Inter', sans-serif; background: #000; overflow: 
     justify-content: center;
     gap: 8px;
     min-height: 90vw; /* Jaga tinggi biar layout ga goyang */
-}
-
-/* --- ARTWORK SECTION OPTIMIZATION --- */
-
-.gallery-master-container {
-    height: 100vh; /* Ngikutin tinggi layar monitor */
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #000; 
-    overflow: hidden;
-    padding: 40px; /* Jarak aman biar gak nempel pinggir layar */
-}
-
-.image-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.image-wrapper img {
-    /* KUNCI UTAMA: Gambar gak boleh lebih lebar dari container & gak boleh lebih tinggi dari layar */
-    max-width: 100%;
-    max-height: 85vh; /* Ngunci tinggi art maksimal 85% tinggi layar monitor */
-    
-    width: auto;  /* Biar lebarnya menyesuaikan tinggi secara otomatis */
-    height: auto; /* Biar tingginya menyesuaikan lebar secara otomatis */
-    
-    object-fit: contain; /* Memastikan seluruh bagian gambar masuk ke frame */
-    
-    border: 2px solid #333; /* Border tipis biar lebih rapi */
-    box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-    border-radius: 8px; /* Sudut halus dikit biar gak kaku */
-    transition: transform 0.4s ease;
-}
-
-/* Biar makin cakep pas di hover */
-.image-wrapper img:hover {
-    transform: scale(1.02);
-    border-color: #ff0000;
-}
-
-/* Responsive buat HP: Di HP kita biarkan dia lebih bebas */
-@media (max-width: 768px) {
-    .image-wrapper img {
-        max-height: 70vh; /* Di HP jangan terlalu tinggi biar teks deskripsi kelihatan */
-        max-width: 95%;
     }
-}
