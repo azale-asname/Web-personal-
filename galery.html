@@ -83,6 +83,8 @@ let dIdx = 1;
 let aIdx = 1;
 
 function moveSlider(type, dir) {
+
+    
     let list = (type === 'design') ? designImgs : artImgs;
     let curr = (type === 'design') ? dIdx : aIdx;
     
@@ -140,3 +142,22 @@ function moveSlider(type, dir) {
     </script>
 </body>
 </html>
+
+<header class="gallery-header">
+    <div class="logo-box">
+        <span class="red-bar-small"></span> DESIGN
+    </div>
+</header>
+
+<div class="gallery-master-container">
+    <div class="main-slider">
+        <div class="slide" data-aos="zoom-in">
+            <div class="image-wrapper">
+                <img src="your-artwork-1.jpg" alt="Design 1">
+            </div>
+        </div>
+        </div>
+
+    <button class="prev-btn"><i class="fa-solid fa-chevron-left"></i></button>
+    <button class="next-btn"><i class="fa-solid fa-chevron-right"></i></button>
+</div>
